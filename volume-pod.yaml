@@ -1,0 +1,18 @@
+#nginx-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx-emptydir
+  labels:
+    app: nginx-emptydir
+    tier: dev
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx:1.14.2
+    volumeMounts:
+    - name: test-vol
+      mountPath: /test-mnt
+  volumes:
+  - name: test-vol
+    emptyDir: {}
